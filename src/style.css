@@ -1,8 +1,26 @@
 @import "tailwindcss";
+:root {
+  --darkblue: #071c33;
+  --ink: #eef4fb;
+  --line: rgba(240, 246, 252, 0.16);
+}
 
+* {
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  background: #0f0f14;
-  color: #f2f0f7;
-  font-family: ui-sans-serif, system-ui, sans-serif;
+  background: var(--darkblue);
+  color: var(--ink);
+  font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
+
+.font-display {
+  font-family: "IBM Plex Sans Condensed", ui-sans-serif, sans-serif;
+}
+.font-mono {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+

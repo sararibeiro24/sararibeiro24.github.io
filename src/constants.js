@@ -50,3 +50,19 @@ export const SOCIALS = [
   { name: "GitHub", href: "https://github.com/sararibeiro24" },
   { name: "Email", href: "mailto:saramribeiro24@gmail.com" },
 ];
+
+export const EDUCATION = [
+  {
+    name: "Bachelor in Informatics and Computing Engineering",
+    where: "Faculty of Engineering, University of Porto",
+    when: "Sept 2023 — Jun 2026",
+    text: "placeholder"
+  },
+  {
+    name: "Master in Informatics and Computing Engineering",
+    where: "Faculty of Engineering, University of Porto",
+    when: "Sept 2026",
+    text: "placeholder" 
+  }
+
+];
