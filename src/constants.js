@@ -36,8 +36,8 @@ export const SKILLS = [
 ];
 
 export const LANGUAGES = [
-  { name: "Portuguese", level: "Native" },
-  { name: "English", level: "C1" },
+  { name: "Portuguese", level: "Native", percent: 100 },
+  { name: "English", level: "C1", percent: 90 },
 ];
 
 export const VOLUNTEER = [

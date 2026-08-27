@@ -65,14 +65,19 @@ export default function App() {
       </Section>
 
       <Section id="languages" title="Languages">
-        <ul className="space-y-2">
+        <div className="border border-white/15 rounded-2xl p-8 md:p-10 max-w-xl space-y-8">
           {LANGUAGES.map((l) => (
-            <li key={l.name} className="flex justify-between max-w-xs text-white/70">
-              <span>{l.name}</span>
-              <span>{l.level}</span>
-            </li>
+            <div key={l.name}>
+              <div className="flex justify-between items-baseline mb-2">
+                <span className="font-display text-lg">{l.name}</span>
+                <span className="font-mono text-xs text-white/50">{l.level}</span>
+              </div>
+              <div className="h-2 rounded-full overflow-hidden bg-white/10">
+                <div className="h-full rounded-full bg-white" style={{ width: `${l.percent}%` }} />
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </Section>
 
       <Section id="experience" title="Experience">
