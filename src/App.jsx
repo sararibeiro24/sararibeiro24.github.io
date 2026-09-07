@@ -2,11 +2,13 @@ import React from "react";
 import { GraduationCap, MapPin } from "lucide-react";
 import { EXPERIENCE, SKILLS, LANGUAGES, VOLUNTEER, SOCIALS, EDUCATION } from "./constants";
 
-
 function Section({ id, title, children }) {
   return (
-    <section id={id} className="max-w-3xl mx-auto px-6 py-16 border-t border-white/10">
-      <h2 className="text-2xl font-display font-semibold mb-6">{title}</h2>
+    <section id={id} className="max-w-3xl mx-auto px-6 py-16 border-t border-cyan-950/60">
+      <div className="w-12 h-0.5 bg-cyan-400 shadow-[0_0_10px_#00e5ff] mb-4" />
+      <h2 className="text-2xl font-display font-bold mb-6 text-white tracking-wider uppercase">
+        {title}
+      </h2>
       {children}
     </section>
   );
@@ -16,26 +18,33 @@ export default function App() {
   return (
     <div>
       {/* NAV */}
-      <header className="sticky top-0 bg-[#0f0f14]/90 border-b border-white/10 z-10">
+      <header className="sticky top-0 bg-[#030712]/90 backdrop-blur-md border-b border-cyan-900/40 z-10">
         <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between text-sm">
-          <span className="font-semibold font-display">Sara Ribeiro</span>
-          <nav className="hidden sm:flex gap-5 text-white/60">
-            <a href="#build" className="hover:text-white">Build</a>
-            <a href="#education" className="hover:text-white">Education</a>
-            <a href="#experience" className="hover:text-white">Experience</a>
-            <a href="#skills" className="hover:text-white">Skills</a>
-            <a href="#contact" className="hover:text-white">Contact</a>
+          <span className="font-display font-bold text-white flex items-center gap-2">
+            <span className="w-2.5 h-2.5 bg-cyan-400 rounded-sm shadow-[0_0_8px_#00e5ff]" />
+            Sara Ribeiro
+          </span>
+          <nav className="hidden sm:flex gap-5 text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
+            <a href="#build" className="hover:text-cyan-400 transition-colors">Build</a>
+            <a href="#education" className="hover:text-cyan-400 transition-colors">Education</a>
+            <a href="#experience" className="hover:text-cyan-400 transition-colors">Experience</a>
+            <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
+            <a href="#contact" className="border border-cyan-400/60 px-2.5 py-1 rounded text-cyan-400 hover:bg-cyan-400/10 transition-all">Contact</a>
           </nav>
         </div>
       </header>
 
-      <section className="max-w-3xl mx-auto px-6 py-24">
-        <p className="text-white/50 text-sm mb-3">Porto, Portugal - incoming MSc student</p>
-        <h1 className="text-5xl font-bold">Sara Ribeiro</h1>
+      <section className="max-w-3xl mx-auto px-6 py-24 text-center sm:text-left">
+        <p className="text-cyan-400/80 font-mono text-xs uppercase tracking-widest mb-3">
+          Porto, Portugal - incoming MSc student
+        </p>
+        <h1 className="text-5xl font-display font-black tracking-tight text-gradient">
+          Sara Ribeiro
+        </h1>
       </section>
 
       <Section id="build" title="Build something">
-        <p className="text-white/70 leading-relaxed max-w-xl">
+        <p className="text-slate-300 leading-relaxed max-w-xl text-sm font-light">
           Just finished a Bachelor's in Informatics and Computing Engineering
           at FEUP, University of Porto, and starting an MSc later this year.
         </p>
@@ -44,20 +53,17 @@ export default function App() {
       <Section id="education" title="Education">
         <div className="space-y-4">
           {EDUCATION.map((edu) => (
-            <div key={edu.name} className="border border-white/15 rounded-xl p-6 flex gap-4">
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 border-2 border-white"
-                style={{ background: "#071c33" }}
-              >
-                <GraduationCap size={22} color="white" />
+            <div key={edu.name} className="edu-card p-6 flex gap-4">
+              <div className="edu-ring w-12 h-12 rounded-lg flex items-center justify-center shrink-0">
+                <GraduationCap size={22} />
               </div>
               <div>
-                <p className="font-mono text-xs text-white/50">{edu.when}</p>
-                <p className="font-display font-semibold text-xl mt-1">{edu.name}</p>
-                <p className="text-sm mt-2 flex items-center gap-1 text-white/60">
-                  <MapPin size={14} /> {edu.where}
+                <p className="font-mono text-xs text-cyan-400/70">{edu.when}</p>
+                <p className="font-display font-semibold text-lg text-white mt-1">{edu.name}</p>
+                <p className="text-xs mt-2 flex items-center gap-1 text-slate-400 font-mono uppercase tracking-wider">
+                  <MapPin size={14} className="text-cyan-400" /> {edu.where}
                 </p>
-                <p className="text-sm mt-4 max-w-xl leading-relaxed text-white/60">{edu.text}</p>
+                <p className="text-xs mt-4 max-w-xl leading-relaxed text-slate-400">{edu.text}</p>
               </div>
             </div>
           ))}
@@ -65,15 +71,15 @@ export default function App() {
       </Section>
 
       <Section id="languages" title="Languages">
-        <div className="border border-white/15 rounded-2xl p-8 md:p-10 max-w-xl space-y-8">
+        <div className="edu-card p-8 md:p-10 max-w-xl space-y-8">
           {LANGUAGES.map((l) => (
             <div key={l.name}>
-              <div className="flex justify-between items-baseline mb-2">
-                <span className="font-display text-lg">{l.name}</span>
-                <span className="font-mono text-xs text-white/50">{l.level}</span>
+              <div className="flex justify-between items-baseline mb-2 text-xs">
+                <span className="font-display text-white tracking-wider">{l.name}</span>
+                <span className="font-mono text-cyan-400 font-semibold">{l.level}</span>
               </div>
-              <div className="h-2 rounded-full overflow-hidden bg-white/10">
-                <div className="h-full rounded-full bg-white" style={{ width: `${l.percent}%` }} />
+              <div className="lang-track h-2 rounded-full overflow-hidden">
+                <div className="lang-fill h-full rounded-full" style={{ width: `${l.percent}%` }} />
               </div>
             </div>
           ))}
@@ -81,14 +87,19 @@ export default function App() {
       </Section>
 
       <Section id="experience" title="Experience">
-        <div className="space-y-8">
+        <div className="space-y-6">
           {EXPERIENCE.map((job) => (
-            <div key={job.role}>
-              <p className="text-white/50 text-xs font-mono">{job.when}</p>
-              <p className="font-medium">{job.role} · {job.org}</p>
-              <ul className="mt-1 text-sm text-white/60 list-disc list-inside">
+            <div key={job.role} className="edu-card p-6">
+              <p className="text-cyan-400/70 text-xs font-mono">{job.when}</p>
+              <p className="font-display font-semibold text-base text-white mt-1">
+                {job.role} <span className="text-cyan-400 font-normal">[{job.org}]</span>
+              </p>
+              <ul className="mt-3 text-xs text-slate-300 space-y-2">
                 {job.points.map((p) => (
-                  <li key={p}>{p}</li>
+                  <li key={p} className="flex items-start gap-2 leading-relaxed">
+                    <span className="text-cyan-400 font-mono">▪</span>
+                    <span>{p}</span>
+                  </li>
                 ))}
               </ul>
             </div>
@@ -97,13 +108,13 @@ export default function App() {
       </Section>
 
       <Section id="skills" title="Technical skills">
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-4">
           {SKILLS.map((group) => (
-            <div key={group.label}>
-              <p className="text-white/50 text-xs uppercase mb-2 font-mono">{group.label}</p>
+            <div key={group.label} className="edu-card p-5">
+              <p className="text-cyan-400 font-display text-xs tracking-wider uppercase mb-3 font-mono">{group.label}</p>
               <div className="flex flex-wrap gap-2">
                 {group.items.map((item) => (
-                  <span key={item} className="text-xs border border-white/15 rounded px-2 py-1 text-white/70 font-mono">
+                  <span key={item} className="skill-tag text-xs rounded px-2.5 py-1 font-mono tracking-wide">
                     {item}
                   </span>
                 ))}
@@ -114,26 +125,30 @@ export default function App() {
       </Section>
 
       <Section id="volunteering" title="Volunteering">
-        <div className="space-y-6">
+        <div className="space-y-4">
           {VOLUNTEER.map((v) => (
-            <div key={v.org}>
-              <p className="font-medium">{v.org} <span className="text-white/50 font-normal">· {v.role}</span></p>
-              <p className="text-sm text-white/60 mt-1">{v.text}</p>
+            <div key={v.org} className="edu-card p-5">
+              <p className="font-display font-semibold text-sm text-white">
+                {v.org} <span className="text-cyan-400 font-normal text-xs font-mono">/ {v.role}</span>
+              </p>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">{v.text}</p>
             </div>
           ))}
         </div>
       </Section>
 
-      <section id="contact" className="relative border-t border-white/10 overflow-hidden">
-        <div className="absolute inset-0 blueprint-grid opacity-40 pointer-events-none" />
+      <section id="contact" className="relative border-t border-cyan-950/60 overflow-hidden">
+        <div className="absolute inset-0 blueprint-grid opacity-30 pointer-events-none" />
         <div className="relative z-10 max-w-3xl mx-auto px-6 py-24 text-center">
-          <h2 className="font-display font-bold text-3xl">Let's build something.</h2>
-          <p className="mt-4 max-w-md mx-auto text-white/60">
+          <h2 className="font-display font-bold text-3xl text-white [text-shadow:0_0_12px_rgba(0,229,255,0.7)] uppercase">
+            Let's build something.
+          </h2>
+          <p className="mt-4 max-w-md mx-auto text-xs font-light text-slate-400">
             placeholder
           </p>
-          <div className="mt-8 flex items-center justify-center gap-4 text-white/70">
+          <div className="mt-8 flex items-center justify-center gap-4 text-xs font-mono tracking-widest uppercase">
             {SOCIALS.map((s) => (
-              <a key={s.name} href={s.href} className="hover:text-white underline">
+              <a key={s.name} href={s.href} className="social-link">
                 {s.name}
               </a>
             ))}
@@ -141,7 +156,7 @@ export default function App() {
         </div>
       </section>
 
-      <footer className="max-w-3xl mx-auto px-6 py-10 text-center text-xs text-white/40">
+      <footer className="max-w-3xl mx-auto px-6 py-10 text-center text-xs font-mono tracking-widest uppercase text-slate-600">
         sara ribeiro
       </footer>
     </div>

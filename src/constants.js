@@ -18,10 +18,10 @@ export const EXPERIENCE = [
     ],
   },
   {
-    role: "Research Initiation Scholar",
+    role: "Research Intern",
     org: "INEGI",
     when: "Oct 2025 — Jun 2026",
-    points: [
+    points: [ 
       "Data analysis and visualization with Power BI.",
       "Organizing datasets across Excel and SQL queries.",
     ],
