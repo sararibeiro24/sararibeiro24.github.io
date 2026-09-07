@@ -1,7 +1,7 @@
 import React from "react";
 import { GraduationCap, MapPin } from "lucide-react";
 import { EXPERIENCE, SKILLS, LANGUAGES, VOLUNTEER, SOCIALS, EDUCATION, PROJECTS } from "./constants";
-
+import {Robot} from "./robot";
 function Section({ id, title, children }) {
   return (
     <section id={id} className="max-w-3xl mx-auto px-6 py-16 border-t border-cyan-950/60">
@@ -35,13 +35,20 @@ export default function App() {
         </div>
       </header>
 
-      <section className="max-w-3xl mx-auto px-6 py-24 text-center sm:text-left">
-        <p className="text-cyan-400/80 font-mono text-xs uppercase tracking-widest mb-3">
-          Porto, Portugal - incoming MSc student
-        </p>
-        <h1 className="text-5xl font-display font-black tracking-tight text-gradient">
-          Sara Ribeiro
-        </h1>
+      <section className="max-w-4xl mx-auto px-6 py-20 flex flex-col sm:flex-row items-center justify-between gap-8 text-center sm:text-left">
+        <div>
+            <p className="text-cyan-400/80 font-mono text-xs uppercase tracking-widest mb-3">
+              Porto, Portugal - incoming MSc student
+            </p>
+            <h1 className="text-5xl font-display font-black tracking-tight text-gradient">
+              Sara Ribeiro
+            </h1>
+          </div>
+
+        {/* 3D Robot Car Orbit Canvas */}
+        <div className="w-full sm:w-80 h-64 shrink-0 flex items-center justify-center">
+          <Robot />
+        </div>
       </section>
 
       <Section id="build" title="Build something">
