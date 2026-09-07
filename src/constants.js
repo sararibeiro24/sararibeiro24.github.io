@@ -66,3 +66,48 @@ export const EDUCATION = [
   }
 
 ];
+
+export const PROJECTS = [
+  {
+    org: "BEST Porto",
+    role: "IT Responsible - SciTech",
+    points: [
+      "placeholder",
+    ],
+  },
+  {
+    org: "Java Compiler",
+    role: "Compilers & Architecture",
+    points: [
+      "placeholder",
+    ],
+  },
+  {
+    org: "Serial Link Layer Protocol",
+    role: "Systems & Network Programming",
+    points: [
+      "placeholder",
+    ],
+  },
+  {
+    org: "Parallel Computing Benchmark",
+    role: "High-Performance Computing",
+    points: [
+      "placeholder",
+    ],
+  },
+  {
+    org: "WebGL Graphics Engine",
+    role: "Computer Graphics",
+    points: [
+      "placeholder",
+    ],
+  },
+  {
+    org: "GameVerse",
+    role: "Full-Stack Web Platform",
+    points: [
+      "placeholder",
+    ],
+  },
+];

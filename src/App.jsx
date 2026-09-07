@@ -1,6 +1,6 @@
 import React from "react";
 import { GraduationCap, MapPin } from "lucide-react";
-import { EXPERIENCE, SKILLS, LANGUAGES, VOLUNTEER, SOCIALS, EDUCATION } from "./constants";
+import { EXPERIENCE, SKILLS, LANGUAGES, VOLUNTEER, SOCIALS, EDUCATION, PROJECTS } from "./constants";
 
 function Section({ id, title, children }) {
   return (
@@ -27,6 +27,7 @@ export default function App() {
           <nav className="hidden sm:flex gap-5 text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
             <a href="#build" className="hover:text-cyan-400 transition-colors">Build</a>
             <a href="#education" className="hover:text-cyan-400 transition-colors">Education</a>
+            <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
             <a href="#experience" className="hover:text-cyan-400 transition-colors">Experience</a>
             <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
             <a href="#contact" className="border border-cyan-400/60 px-2.5 py-1 rounded text-cyan-400 hover:bg-cyan-400/10 transition-all">Contact</a>
@@ -81,6 +82,26 @@ export default function App() {
               <div className="lang-track h-2 rounded-full overflow-hidden">
                 <div className="lang-fill h-full rounded-full" style={{ width: `${l.percent}%` }} />
               </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section id="projects" title="Projects">
+        <div className="space-y-6">
+          {PROJECTS.map((proj) => (
+            <div key={proj.role} className="edu-card p-6">
+              <p className="font-display font-semibold text-base text-white mt-1">
+                {proj.role} <span className="text-cyan-400 font-normal">[{proj.org}]</span>
+              </p>
+              <ul className="mt-3 text-xs text-slate-300 space-y-2">
+                {proj.points?.map((p) => (
+                  <li key={p} className="flex items-start gap-2 leading-relaxed">
+                    <span className="text-cyan-400 font-mono">▪</span>
+                    <span>{p}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
