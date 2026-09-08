@@ -69,13 +69,6 @@ export const EDUCATION = [
 
 export const PROJECTS = [
   {
-    org: "BEST Porto",
-    role: "IT Responsible - SciTech",
-    points: [
-      "placeholder",
-    ],
-  },
-  {
     org: "Java Compiler",
     role: "Compilers & Architecture",
     points: [
@@ -90,15 +83,8 @@ export const PROJECTS = [
     ],
   },
   {
-    org: "Parallel Computing Benchmark",
-    role: "High-Performance Computing",
-    points: [
-      "placeholder",
-    ],
-  },
-  {
-    org: "WebGL Graphics Engine",
-    role: "Computer Graphics",
+    org: "CPD",
+    role: "placeholder",
     points: [
       "placeholder",
     ],
@@ -110,4 +96,14 @@ export const PROJECTS = [
       "placeholder",
     ],
   },
+];
+
+export const ACTIVITIES = [
+  {
+    org: "BEST Porto",
+    role: "IT Responsible - Scitech",
+    points: [
+      "placeholder",
+    ],
+  }
 ];
