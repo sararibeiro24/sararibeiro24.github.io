@@ -129,9 +129,7 @@ export default function App() {
                 <div>
                   <p className="font-display font-semibold text-base text-white  transition-colors">
                     {proj.role}{" "}
-                    <span className="text-cyan-400 font-normal">
-                      [{proj.org}]
-                    </span>
+                 
                   </p>
                 </div>
               </div>
@@ -178,6 +176,20 @@ export default function App() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-6 flex justify-end">
+                {selectedProject.info && (
+                  <a
+                    href={selectedProject.info}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 border border-cyan-400/30 px-3 py-2 rounded hover:bg-cyan-400/10 transition-all"
+                  >
+                    <ExternalLink size={14} />
+                    View Project
+                  </a>
+                )}
+              </div>
             </div>
           </div>
         </div>

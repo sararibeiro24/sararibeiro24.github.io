@@ -26,6 +26,14 @@ export const EXPERIENCE = [
       "Organizing datasets across Excel and SQL queries.",
     ],
   },
+  {
+    role:"TA Teaching Assistant",
+    org:"Faculty of Engineering, University of Porto", 
+    when:"Sept 2026 — Present", 
+    points: [
+      "placeholder"
+    ]
+  },
 ];
 
 export const SKILLS = [
@@ -42,7 +50,7 @@ export const LANGUAGES = [
 
 export const VOLUNTEER = [
   { org: "FEUP Buddies", role: "Academic Mentor", text: "Guiding incoming Erasmus students at FEUP." },
-  { org: "Community Outreach", role: "Volunteer", text: "Banco Alimentar, beach cleanups, homeless support." },
+  { org: "Community Outreach", role: "Volunteer", text: "\"Banco Alimentar\", beach cleanups, homeless support." },
 ];
 
 export const SOCIALS = [
@@ -61,7 +69,7 @@ export const EDUCATION = [
   {
     name: "Master in Informatics and Computing Engineering",
     where: "Faculty of Engineering, University of Porto",
-    when: "Sept 2026",
+    when: "Sept 2026 — Present",
     text: "placeholder" 
   }
 
@@ -69,41 +77,44 @@ export const EDUCATION = [
 
 export const PROJECTS = [
   {
-    org: "Java Compiler",
-    role: "Compilers & Architecture",
+    role: "Java Compiler",
     points: [
       "placeholder",
     ],
+    info: "https://github.com/sararibeiro24/Y3S2-COMPILERS",
   },
   {
-    org: "Serial Link Layer Protocol",
-    role: "Systems & Network Programming",
+    role: "Serial Link Layer Protocol",
     points: [
       "placeholder",
     ],
+    info: "https://github.com/sararibeiro24/Y3S1-COMPUTER_NETWORKS",
   },
   {
-    org: "CPD",
-    role: "placeholder",
+    role: "ChatRoom",
     points: [
       "placeholder",
     ],
+    info: "https://github.com/sararibeiro24/Y3S2-PARALLEL_DISTRIBUTED_COMPUTING/tree/main/assign2",
   },
   {
-    org: "GameVerse",
-    role: "Full-Stack Web Platform",
+    role: "GameVerse",
     points: [
       "placeholder",
     ],
+    info: "https://github.com/sararibeiro24/Y3S1-DATABASE_WEB_APPLICATIONS_LABORATORY",
   },
 ];
 
 export const ACTIVITIES = [
   {
     org: "BEST Porto",
-    role: "IT Responsible - Scitech",
+    role: "IT Responsible - Scitech 26",
     points: [
-      "placeholder",
+      "Maintain the SciTeCh website",
+      "Add new features to the Store App",
+      "Assist in preparing IT training sessions",
+      "Assist the Topics during the Hackathon",
     ],
   }
 ];
