@@ -12,6 +12,7 @@ import Volunteering from "./components/Volunteering";
 import Socials from "./components/Socials";
 import Activities from "./components/Activities";
 import Footer from "./components/Footer";
+import { LocaleProvider } from "./locale";
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -31,20 +32,22 @@ export default function App() {
   }, [selectedProject]);
 
   return (
-    <div>
-      <NavBar />
-      <Hero />
-      <Build />
-      <Education />
-      <Projects onSelect={setSelectedProject} />
-      <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
-      <Experience />
-      <Activities />
-      <Skills />
-      <Languages />
-      <Volunteering />
-      <Socials />
-      <Footer />
-    </div>
+    <LocaleProvider>
+      <div>
+        <NavBar />
+        <Hero />
+        <Build />
+        <Education />
+        <Projects onSelect={setSelectedProject} />
+        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        <Experience />
+        <Activities />
+        <Skills />
+        <Languages />
+        <Volunteering />
+        <Socials />
+        <Footer />
+      </div>
+    </LocaleProvider>
   );
 }

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { GITHUB_USERNAME } from "../constants";
+import { useLocale } from "../locale-context";
 
 export default function GithubCommitCount() {
+  const { t } = useLocale();
   const [result, setResult] = useState({ status: "loading", count: null });
 
   useEffect(() => {
@@ -38,9 +40,9 @@ export default function GithubCommitCount() {
     <div className="edu-card w-full p-4 text-left">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-slate-100">This week</p>
+          <p className="text-sm font-semibold text-slate-100">{t.thisWeek}</p>
           <p className="mt-1 text-[10px] uppercase tracking-widest text-slate-400 font-mono">
-            Last 7 days on GitHub
+            {t.last7Days}
           </p>
         </div>
         <span className="font-mono text-xs font-semibold text-cyan-400" aria-hidden="true">
@@ -52,7 +54,7 @@ export default function GithubCommitCount() {
           {result.status === "success" ? result.count : result.status === "loading" ? "—" : "!"}
         </span>
         <span className="text-xs text-slate-300">
-          {result.status === "error" ? "Could not load commits" : "commits, incl. private"}
+          {result.status === "error" ? t.loadError : t.commits}
         </span>
       </div>
       <a
@@ -61,7 +63,7 @@ export default function GithubCommitCount() {
         target="_blank"
         rel="noreferrer"
       >
-        View GitHub profile
+        {t.githubProfile}
       </a>
     </div>
   );

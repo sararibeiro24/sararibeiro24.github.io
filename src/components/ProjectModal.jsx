@@ -1,7 +1,9 @@
 import React from "react";
 import { X, ExternalLink } from "lucide-react";
+import { useLocale } from "../locale-context";
 
 export default function ProjectModal({ project, onClose }) {
+  const { t } = useLocale();
   if (!project) return null;
 
   return (
@@ -13,7 +15,7 @@ export default function ProjectModal({ project, onClose }) {
             <h3 className="text-xl sm:text-2xl font-display font-bold text-white mt-1">{project.role}</h3>
           </div>
 
-          <button onClick={onClose} className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-cyan-950/60 border border-transparent hover:border-cyan-500/40 transition-all font-mono text-xs flex items-center gap-1" aria-label="Close modal">
+          <button onClick={onClose} className="p-1.5 rounded text-slate-400 hover:text-white hover:bg-cyan-950/60 border border-transparent hover:border-cyan-500/40 transition-all font-mono text-xs flex items-center gap-1" aria-label={t.close}>
             <span className="hidden sm:inline text-[10px] uppercase text-slate-500">ESC</span>
             <X size={18} />
           </button>
@@ -32,7 +34,7 @@ export default function ProjectModal({ project, onClose }) {
             {project.info && (
               <a href={project.info} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()} className="inline-flex items-center gap-2 text-xs font-mono text-cyan-400 border border-cyan-400/30 px-3 py-2 rounded hover:bg-cyan-400/10 transition-all">
                 <ExternalLink size={14} />
-                View Project
+                {t.viewProject}
               </a>
             )}
           </div>
