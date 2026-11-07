@@ -1,21 +1,11 @@
 export const EXPERIENCE = [
   {
-    role: "Store Operator",
-    org: "Pans & Company",
-    when: "Jun 2024 — Jul 2025",
+    role:"TA Teaching Assistant",
+    org:"Faculty of Engineering, University of Porto", 
+    when:"Sept 2026 — Present", 
     points: [
-      "Customer service and food prep under quality and safety standards.",
-      "Built multitasking and prioritization habits during busy shifts.",
-    ],
-  },
-  {
-    role: "XR Software Intern",
-    org: "INESC TEC",
-    when: "Summer 2025",
-    points: [
-      "Designed and built an XR training platform in Unity.",
-      "Applied real software-engineering practices to a research prototype.",
-    ],
+      "Guided student teams throughout course projects, fostering teamwork and best practices.Supported professors with progress monitoring and constructive evaluation of student deliverables"
+    ]
   },
   {
     role: "Research Intern",
@@ -26,14 +16,24 @@ export const EXPERIENCE = [
       "Organizing datasets across Excel and SQL queries.",
     ],
   },
-  {
-    role:"TA Teaching Assistant",
-    org:"Faculty of Engineering, University of Porto", 
-    when:"Sept 2026 — Present", 
+   {
+    role: "XR Software Intern",
+    org: "INESC TEC",
+    when: "Summer 2025",
     points: [
-      "placeholder"
-    ]
+      "Designed and built an XR training platform in Unity.",
+      "Applied real software-engineering practices to a research prototype.",
+    ],
   },
+  {
+    role: "Store Operator",
+    org: "Pans & Company",
+    when: "Jun 2024 — Jul 2025",
+    points: [
+      "Customer service and food prep under quality and safety standards.",
+      "Built multitasking and prioritization habits during busy shifts.",
+    ],
+  }  
 ];
 
 export const SKILLS = [
@@ -53,9 +53,11 @@ export const VOLUNTEER = [
   { org: "Community Outreach", role: "Volunteer", text: "\"Banco Alimentar\", beach cleanups, homeless support." },
 ];
 
+export const GITHUB_USERNAME = "sararibeiro24";
+
 export const SOCIALS = [
   { name: "LinkedIn", href: "https://www.linkedin.com/in/sara-ribeiro-8357023b6/" },
-  { name: "GitHub", href: "https://github.com/sararibeiro24" },
+  { name: "GitHub", href: `https://github.com/${GITHUB_USERNAME}` },
   { name: "Email", href: "mailto:saramribeiro24@gmail.com" },
 ];
 

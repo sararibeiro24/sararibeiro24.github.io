@@ -1,5 +1,6 @@
 import React from "react";
 import { Robot } from "../robot";
+import GithubCommitCount from "./GithubCommitCount";
 
 export default function Hero() {
   return (
@@ -11,8 +12,9 @@ export default function Hero() {
         <h1 className="text-5xl font-display font-black tracking-tight text-gradient">Sara Ribeiro</h1>
       </div>
 
-      <div className="w-full sm:w-80 h-64 shrink-0 flex items-center justify-center">
+      <div className="w-full sm:w-80 shrink-0 flex flex-col items-center gap-3">
         <Robot />
+        <GithubCommitCount />
       </div>
     </section>
   );
