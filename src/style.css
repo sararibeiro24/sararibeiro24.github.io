@@ -43,6 +43,28 @@ body::before {
   animation: liquid-drift 24s ease-in-out infinite alternate;
 }
 
+body::after {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+  background-image:
+    radial-gradient(1px 1px at 7% 13%, rgba(226, 248, 255, 0.8) 50%, transparent 100%),
+    radial-gradient(1px 1px at 18% 72%, rgba(168, 231, 255, 0.7) 50%, transparent 100%),
+    radial-gradient(1px 1px at 28% 32%, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 37% 84%, rgba(195, 234, 255, 0.75) 50%, transparent 100%),
+    radial-gradient(1px 1px at 48% 18%, rgba(255, 255, 255, 0.75) 50%, transparent 100%),
+    radial-gradient(1px 1px at 57% 59%, rgba(173, 224, 255, 0.65) 50%, transparent 100%),
+    radial-gradient(1px 1px at 69% 29%, rgba(255, 255, 255, 0.8) 50%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 78% 78%, rgba(181, 232, 255, 0.7) 50%, transparent 100%),
+    radial-gradient(1px 1px at 89% 46%, rgba(255, 255, 255, 0.7) 50%, transparent 100%),
+    radial-gradient(1px 1px at 96% 9%, rgba(183, 230, 255, 0.75) 50%, transparent 100%);
+  background-size: 100vw 100vh;
+  opacity: 0.65;
+  animation: star-twinkle 8s ease-in-out infinite alternate;
+}
+
 .font-display {
   font-family: 'Orbitron', sans-serif;
   letter-spacing: 0.05em;
@@ -247,6 +269,15 @@ body::before {
   }
   to {
     transform: translate3d(2%, 1%, 0) rotate(5deg) scale(1.08);
+  }
+}
+
+@keyframes star-twinkle {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 0.8;
   }
 }
 
