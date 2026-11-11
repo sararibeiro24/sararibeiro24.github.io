@@ -21,7 +21,17 @@ export default function Projects({ onSelect }) {
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="font-display font-semibold text-base text-white  transition-colors">{proj.role}</p>
+                {proj.org && (
+                  <p className="text-cyan-400/70 text-xs font-mono mb-1">{proj.org}</p>
+                )}
+                <p className="font-display font-semibold text-base text-white group-hover:text-cyan-400 transition-colors">
+                  {proj.role}
+                </p>
+                {proj.description && (
+                  <p className="text-xs text-slate-300/80 mt-2 leading-relaxed">
+                    {proj.description}
+                  </p>
+                )}
               </div>
             </div>
           </div>

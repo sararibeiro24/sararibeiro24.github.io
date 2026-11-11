@@ -1,8 +1,8 @@
 export const EXPERIENCE = [
   {
-    role:"TA Teaching Assistant",
-    org:"Faculty of Engineering, University of Porto", 
-    when:"Sept 2026 — Present", 
+    role: "TA Teaching Assistant",
+    org: "Faculty of Engineering, University of Porto",
+    when: "Sept 2026 — Present",
     points: [
       "Guided student teams throughout course projects, fostering teamwork and best practices.Supported professors with progress monitoring and constructive evaluation of student deliverables"
     ]
@@ -11,12 +11,12 @@ export const EXPERIENCE = [
     role: "Research Intern",
     org: "INEGI",
     when: "Oct 2025 — Jun 2026",
-    points: [ 
+    points: [
       "Data analysis and visualization with Power BI.",
       "Organizing datasets across Excel and SQL queries.",
     ],
   },
-   {
+  {
     role: "XR Software Intern",
     org: "INESC TEC",
     when: "Summer 2025",
@@ -33,7 +33,7 @@ export const EXPERIENCE = [
       "Customer service and food prep under quality and safety standards.",
       "Built multitasking and prioritization habits during busy shifts.",
     ],
-  }  
+  }
 ];
 
 export const SKILLS = [
@@ -66,43 +66,63 @@ export const EDUCATION = [
     name: "Bachelor in Informatics and Computing Engineering",
     where: "Faculty of Engineering, University of Porto",
     when: "Sept 2023 — Jun 2026",
-    text: "placeholder"
+    text: "Completed a degree focused on the foundations of software development and computing systems."
   },
   {
     name: "Master in Informatics and Computing Engineering",
     where: "Faculty of Engineering, University of Porto",
     when: "Sept 2026 — Present",
-    text: "placeholder" 
+    text: "Currently pursuing advanced studies in Informatics and Computing Engineering."
   }
 
 ];
 
 export const PROJECTS = [
   {
-    role: "Java Compiler",
-    points: [
-      "placeholder",
-    ],
-    info: "https://github.com/sararibeiro24/Y3S2-COMPILERS",
-  },
-  {
     role: "Serial Link Layer Protocol",
+    org: "C",
+    description: "Reliable data link layer protocol implemented in C over a serial interface (RS-232), supporting frame framing, byte stuffing, and Stop-and-Wait ARQ error control for file transfers.",
     points: [
-      "placeholder",
+      "Designed and implemented a reliable Data Link Layer protocol over RS-232 serial communication in C to transmit data between two systems.",
+      "Engineered frame synchronization, byte stuffing/destuffing for data transparency, and error detection using BCC checksums.",
+      "Implemented flow control and error recovery mechanisms via Stop-and-Wait ARQ with timeout handling, acknowledgments (RR), and rejections (REJ).",
+      "Built an application layer on top to reliably transfer files of arbitrary size, evaluating throughput and transmission efficiency under simulated noisy channel conditions.",
     ],
     info: "https://github.com/sararibeiro24/Y3S1-COMPUTER_NETWORKS",
   },
   {
-    role: "ChatRoom",
+    role: "Distributed Chat Application",
+    org: "Java",
+    description: "Scalable, multithreaded distributed chatroom built in Java using socket programming, supporting concurrent rooms, user presence, and synchronized messaging.",
     points: [
-      "placeholder",
+      "Developed a fault-tolerant, multithreaded distributed chatroom system in Java utilizing TCP/UDP sockets for real-time client-server communication.",
+      "Engineered concurrency controls and thread-safe data structures to manage concurrent user sessions and eliminate race conditions.",
+      "Implemented core messaging features: multi-channel rooms, private and broadcast messaging, user registration, and active presence tracking.",
+      "Designed distributed state coordination to ensure message consistency and graceful recovery during client disconnections or network faults.",
     ],
     info: "https://github.com/sararibeiro24/Y3S2-PARALLEL_DISTRIBUTED_COMPUTING/tree/main/assign2",
   },
   {
-    role: "GameVerse",
+    role: "Compilers",
+    org: "Java & JVM Bytecode",
+    description: "Full compiler for the Java-- language written with JavaCC, featuring AST construction, semantic type checking, and optimized JVM bytecode generation via Jasmin.",
     points: [
-      "placeholder",
+      "Constructed a complete compiler front-end using JavaCC for lexical and syntactic analysis, parsing Java-- code into an Abstract Syntax Tree (AST) with error recovery.",
+      "Engineered semantic analysis routines: symbol table creation, type checking, method resolution, and variable initialization verification.",
+      "Implemented JVM bytecode generation using the Jasmin assembler format, handling control flow, expressions, arrays, and method invocations.",
+      "Applied compiler optimizations including register allocation via variable liveness analysis and graph coloring, as well as dead code elimination.",
+    ],
+    info: "https://github.com/sararibeiro24/Y3S2-COMPILERS",
+  },
+  {
+    role: "GameVerse",
+    org: "Full-Stack",
+    description: "Full-stack, database-driven web platform for video game exploration and community discussions, built with PostgreSQL, backend APIs, and responsive design.",
+    points: [
+      "Architected and implemented a relational database in PostgreSQL featuring normalized schemas (3NF), indexes, transactions, triggers, and stored procedures.",
+      "Developed full-stack features including user authentication, personalized game libraries, reviews, ratings, and threaded discussion boards.",
+      "Integrated role-based access control (RBAC) supporting distinct permissions for users, moderators, and administrators.",
+      "Hardened the application against common security vulnerabilities: SQL injection, Cross-Site Scripting (XSS), and Cross-Site Request Forgery (CSRF).",
     ],
     info: "https://github.com/sararibeiro24/Y3S1-DATABASE_WEB_APPLICATIONS_LABORATORY",
   },

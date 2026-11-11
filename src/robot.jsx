@@ -18,9 +18,9 @@ export const Robot = () => {
     camera.position.set(3.8, 2.6, 4.4);
     camera.lookAt(0, 0.1, 0);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.3;
     container.appendChild(renderer.domElement);
@@ -54,7 +54,7 @@ export const Robot = () => {
     const chassis = new THREE.Mesh(chassisGeo, chassisMat);
     car.add(chassis);
 
-    const postGeo = new THREE.CylinderGeometry(0.025, 0.025, 0.35, 12);
+    const postGeo = new THREE.CylinderGeometry(0.025, 0.025, 0.35, 6);
     const brassMat = new THREE.MeshStandardMaterial({ color: 0xeab308, metalness: 0.9, roughness: 0.2 });
     [
       [0.9, 0.18, 0.55],
@@ -79,7 +79,7 @@ export const Robot = () => {
 
     const leadMatR = new THREE.MeshBasicMaterial({ color: 0xef4444 });
     const leadMatB = new THREE.MeshBasicMaterial({ color: 0x09090b });
-    const leadGeo = new THREE.CylinderGeometry(0.015, 0.015, 0.3, 8);
+    const leadGeo = new THREE.CylinderGeometry(0.015, 0.015, 0.3, 6);
     const leadR = new THREE.Mesh(leadGeo, leadMatR);
     leadR.position.set(-0.02, 0.25, 0.12);
     leadR.rotation.z = Math.PI / 3;
@@ -129,7 +129,7 @@ export const Robot = () => {
     const sensorBacking = new THREE.Mesh(sensorBackingGeo, sensorBackingMat);
     sensorGroup.add(sensorBacking);
 
-    const barrelGeo = new THREE.CylinderGeometry(0.13, 0.13, 0.22, 28);
+    const barrelGeo = new THREE.CylinderGeometry(0.13, 0.13, 0.22, 12);
     const barrelMat = new THREE.MeshStandardMaterial({
       color: 0xf1f5f9,
       metalness: 0.95,
@@ -140,7 +140,7 @@ export const Robot = () => {
       color: 0x334155,
       roughness: 0.9,
     });
-    const screenGeo = new THREE.CylinderGeometry(0.09, 0.09, 0.225, 20);
+    const screenGeo = new THREE.CylinderGeometry(0.09, 0.09, 0.225, 10);
 
     [-0.2, 0.2].forEach((zOffset) => {
       const barrel = new THREE.Mesh(barrelGeo, barrelMat);
@@ -168,7 +168,7 @@ export const Robot = () => {
       new THREE.Vector3(0.65, 0.85, -0.05),
       new THREE.Vector3(0.8, 0.44, 0)
     );
-    const cableGeo = new THREE.TubeGeometry(cableCurve, 24, 0.035, 8, false);
+    const cableGeo = new THREE.TubeGeometry(cableCurve, 12, 0.035, 5, false);
     const cableMat = new THREE.MeshStandardMaterial({
       color: 0xf43f5e,
       roughness: 0.4,
@@ -198,11 +198,11 @@ export const Robot = () => {
       const wheelGroup = new THREE.Group();
       wheelGroup.position.set(x, y, z);
 
-      const tire = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 0.22, 28), tireMat);
+      const tire = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 0.22, 14), tireMat);
       tire.rotation.x = Math.PI / 2;
       wheelGroup.add(tire);
 
-      const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.29, 0.29, 0.23, 20), rimMat);
+      const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.29, 0.29, 0.23, 10), rimMat);
       rim.rotation.x = Math.PI / 2;
       wheelGroup.add(rim);
 
@@ -212,7 +212,7 @@ export const Robot = () => {
         wheelGroup.add(spoke);
       }
 
-      const nut = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.25, 12), hubNutMat);
+      const nut = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.25, 6), hubNutMat);
       nut.rotation.x = Math.PI / 2;
       wheelGroup.add(nut);
 
@@ -228,7 +228,7 @@ export const Robot = () => {
 
     const createGlowingOrbit = (radius, tiltX, tiltZ, colorHex) => {
       const curve = new THREE.EllipseCurve(0, 0, radius, radius * 0.95, 0, Math.PI * 2);
-      const points = curve.getPoints(100);
+      const points = curve.getPoints(48);
       const geo = new THREE.BufferGeometry().setFromPoints(
         points.map((p) => new THREE.Vector3(p.x, 0, p.y))
       );
@@ -251,7 +251,7 @@ export const Robot = () => {
     mainGroup.add(orbit1);
     mainGroup.add(orbit2);
 
-    const satGeo = new THREE.SphereGeometry(0.09, 16, 16);
+    const satGeo = new THREE.SphereGeometry(0.09, 8, 8);
     const satMat = new THREE.MeshBasicMaterial({ color: 0x00f0ff });
     const satellite = new THREE.Mesh(satGeo, satMat);
     scene.add(satellite);
@@ -274,17 +274,39 @@ export const Robot = () => {
 
     let mouseX = 0;
     let mouseY = 0;
+    let mouseTicking = false;
     const onMouseMove = (e) => {
-      const rect = container.getBoundingClientRect();
-      mouseX = ((e.clientX - rect.left) / width) * 2 - 1;
-      mouseY = -(((e.clientY - rect.top) / height) * 2 - 1);
+      if (mouseTicking) return;
+      mouseTicking = true;
+      requestAnimationFrame(() => {
+        const rect = container.getBoundingClientRect();
+        mouseX = ((e.clientX - rect.left) / width) * 2 - 1;
+        mouseY = -(((e.clientY - rect.top) / height) * 2 - 1);
+        mouseTicking = false;
+      });
     };
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
+
+    // Pause the render loop when the component is off-screen
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    observer.observe(container);
 
     const clock = new THREE.Clock();
 
+    // Pre-allocate reusable vectors to avoid GC pressure every frame
+    const satPos = new THREE.Vector3();
+    const axisX = new THREE.Vector3(1, 0, 0);
+    const axisZ = new THREE.Vector3(0, 0, 1);
+
+    let animId;
     const animate = () => {
-      requestAnimationFrame(animate);
+      animId = requestAnimationFrame(animate);
+      if (!isVisible) return;           // skip all work when off-screen
+
       const t = clock.getElapsedTime();
 
       car.position.y = Math.sin(t * 1.6) * 0.07;
@@ -299,9 +321,9 @@ export const Robot = () => {
       const satAngle = t * 1.1;
       const rx = 2.5;
       const rz = 2.5 * 0.95;
-      const satPos = new THREE.Vector3(Math.cos(satAngle) * rx, 0, Math.sin(satAngle) * rz);
-      satPos.applyAxisAngle(new THREE.Vector3(1, 0, 0), Math.PI / 3.2);
-      satPos.applyAxisAngle(new THREE.Vector3(0, 0, 1), 0.25);
+      satPos.set(Math.cos(satAngle) * rx, 0, Math.sin(satAngle) * rz);
+      satPos.applyAxisAngle(axisX, Math.PI / 3.2);
+      satPos.applyAxisAngle(axisZ, 0.25);
       satellite.position.copy(satPos);
 
       mainGroup.rotation.y += (mouseX * 0.35 - mainGroup.rotation.y) * 0.05;
@@ -313,6 +335,8 @@ export const Robot = () => {
     animate();
 
     return () => {
+      cancelAnimationFrame(animId);
+      observer.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
       renderer.dispose();
       if (container.contains(renderer.domElement)) {

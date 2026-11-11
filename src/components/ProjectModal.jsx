@@ -22,6 +22,11 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         <div className="mt-6">
+          {project.description && (
+            <p className="text-xs sm:text-sm text-slate-300 mb-5 leading-relaxed bg-cyan-950/30 p-3.5 rounded border border-cyan-500/20">
+              {project.description}
+            </p>
+          )}
           <ul className="space-y-3 text-xs sm:text-sm text-slate-300">
             {project.points?.map((point, idx) => (
               <li key={idx} className="flex items-start gap-3 leading-relaxed">

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@300;400;500&display=swap');
+/* Fonts loaded via <link> in index.html for non-blocking fetch */
 
 :root {
   --darkblue: #040810;
@@ -23,7 +23,7 @@ body {
     radial-gradient(ellipse at 18% 16%, rgba(42, 133, 166, 0.24), transparent 38rem),
     radial-gradient(ellipse at 82% 45%, rgba(95, 78, 157, 0.17), transparent 34rem),
     linear-gradient(145deg, #050b12, #070a13 58%, #09121c);
-  background-attachment: fixed;
+  /* background-attachment: fixed causes full-page repaint on every scroll */
   color: var(--ink);
   font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -32,15 +32,13 @@ body {
 body::before {
   position: fixed;
   z-index: -1;
-  inset: -35%;
+  inset: 0;
   content: "";
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 35% 45%, rgba(76, 195, 220, 0.2), transparent 24%),
-    radial-gradient(ellipse at 72% 54%, rgba(139, 122, 207, 0.18), transparent 23%),
-    radial-gradient(ellipse at 54% 26%, rgba(193, 225, 238, 0.1), transparent 19%);
-  filter: blur(44px);
-  animation: liquid-drift 24s ease-in-out infinite alternate;
+    radial-gradient(circle at 35% 45%, rgba(76, 195, 220, 0.16), transparent 45%),
+    radial-gradient(circle at 72% 54%, rgba(139, 122, 207, 0.14), transparent 42%),
+    radial-gradient(circle at 54% 26%, rgba(193, 225, 238, 0.08), transparent 35%);
 }
 
 body::after {
@@ -62,7 +60,6 @@ body::after {
     radial-gradient(1px 1px at 96% 9%, rgba(183, 230, 255, 0.75) 50%, transparent 100%);
   background-size: 100vw 100vh;
   opacity: 0.65;
-  animation: star-twinkle 8s ease-in-out infinite alternate;
 }
 
 .font-display {
@@ -179,20 +176,17 @@ body::after {
   height: 18rem;
   border-radius: 50%;
   content: "";
-  background: radial-gradient(circle, rgba(72, 179, 209, 0.2), rgba(106, 99, 167, 0.09) 40%, transparent 70%);
-  filter: blur(20px);
+  background: radial-gradient(circle, rgba(72, 179, 209, 0.22), rgba(106, 99, 167, 0.1) 40%, transparent 70%);
   pointer-events: none;
 }
 
 .edu-card {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0) 48%), var(--panel);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0) 48%), rgba(8, 18, 29, 0.65);
   border: 1px solid var(--line);
   border-radius: 1.15rem;
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18), inset 0 1px rgba(255, 255, 255, 0.22);
-  -webkit-backdrop-filter: blur(11px) saturate(150%);
-  backdrop-filter: blur(11px) saturate(150%);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22), inset 0 1px rgba(255, 255, 255, 0.22);
   transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
 }
 
@@ -256,31 +250,6 @@ body::after {
   box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
 }
 
-.blueprint-grid {
-  background-image: 
-    linear-gradient(to right, rgba(0, 229, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 229, 255, 0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-@keyframes liquid-drift {
-  from {
-    transform: translate3d(-2%, -1%, 0) rotate(-5deg) scale(1);
-  }
-  to {
-    transform: translate3d(2%, 1%, 0) rotate(5deg) scale(1.08);
-  }
-}
-
-@keyframes star-twinkle {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 0.8;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -289,98 +258,5 @@ body::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* car */
-.robot-orbit-container {
-  position: relative;
-  width: 110px;
-  height: 110px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Center base containing the vector car */
-.core-platform {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: radial-gradient(circle, #0f172a 60%, #020617 100%);
-  border: 1.5px solid rgba(56, 189, 248, 0.4);
-  box-shadow: 0 0 16px rgba(56, 189, 248, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.robot-svg {
-  width: 58px;
-  height: 58px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
-}
-
-/* Outer rotating ring */
-.orbit-track {
-  position: absolute;
-  width: 104px;
-  height: 104px;
-  border-radius: 50%;
-  border: 1px dashed rgba(56, 189, 248, 0.35);
-  animation: orbit-cw 10s linear infinite;
-  pointer-events: none;
-}
-
-/* Outer satellite dot */
-.satellite {
-  position: absolute;
-  top: -4px;
-  left: calc(50% - 4px);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #38bdf8;
-  box-shadow: 0 0 8px #38bdf8, 0 0 14px #0284c7;
-}
-
-/* Inner faint counter-orbiting ring */
-.orbit-track-inner {
-  position: absolute;
-  width: 86px;
-  height: 86px;
-  border-radius: 50%;
-  border: 1px dotted rgba(245, 158, 11, 0.3);
-  animation: orbit-ccw 6s linear infinite;
-  pointer-events: none;
-}
-
-.satellite-inner {
-  position: absolute;
-  bottom: -3px;
-  left: calc(50% - 3px);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #f59e0b;
-  box-shadow: 0 0 6px #f59e0b;
-}
-
-@keyframes orbit-cw {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes orbit-ccw {
-  from {
-    transform: rotate(360deg);
-  }
-  to {
-    transform: rotate(0deg);
   }
 }
