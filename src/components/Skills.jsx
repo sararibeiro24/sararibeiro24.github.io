@@ -1,12 +1,14 @@
 import React from "react";
 import Section from "./Section";
-import { SKILLS } from "../constants";
+import { useLocale } from "../locale-context";
 
 export default function Skills() {
+  const { t, content } = useLocale();
+
   return (
-    <Section id="skills" title="Technical skills">
+    <Section id="skills" title={t.skillsTitle}>
       <div className="grid sm:grid-cols-2 gap-4">
-        {SKILLS.map((group) => (
+        {content.skills.map((group) => (
           <div key={group.label} className="edu-card p-5">
             <p className="text-cyan-400 font-display text-xs tracking-wider uppercase mb-3 font-mono">{group.label}</p>
             <div className="flex flex-wrap gap-2">

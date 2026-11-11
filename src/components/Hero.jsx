@@ -1,19 +1,27 @@
 import React from "react";
 import { Robot } from "../robot";
 import GithubCommitCount from "./GithubCommitCount";
+import { useLocale } from "../locale-context";
 
 export default function Hero() {
+  const { t } = useLocale();
+
   return (
-    <section className="max-w-4xl mx-auto px-6 py-20 flex flex-col sm:flex-row items-center justify-between gap-8 text-center sm:text-left">
-      <div>
+    <section id="top" className="hero-section mx-auto flex max-w-6xl flex-col items-center justify-between gap-12 px-6 py-20 text-center sm:flex-row sm:text-left lg:py-28">
+      <div className="hero-copy">
         <p className="text-cyan-400/80 font-mono text-xs uppercase tracking-widest mb-3">
-          Porto, Portugal - incoming MSc student
+          {t.heroLocation}
         </p>
-        <h1 className="text-5xl font-display font-black tracking-tight text-gradient">Sara Ribeiro</h1>
+        <h1 className="text-6xl font-display font-black tracking-tight text-gradient sm:text-7xl lg:text-8xl">Sara<br />Ribeiro</h1>
+        <p className="hero-intro mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
+          {t.heroIntro}
+        </p>
       </div>
 
-      <div className="w-full sm:w-80 shrink-0 flex flex-col items-center gap-3">
-        <Robot />
+      <div className="hero-art flex w-full shrink-0 flex-col items-center gap-3 sm:w-80">
+        <div className="hero-orbit">
+          <Robot />
+        </div>
         <GithubCommitCount />
       </div>
     </section>

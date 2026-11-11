@@ -1,17 +1,19 @@
 import React from "react";
 import Section from "./Section";
-import { PROJECTS } from "../constants";
+import { useLocale } from "../locale-context";
 
 export default function Projects({ onSelect }) {
+  const { t, content } = useLocale();
+
   return (
-    <Section id="projects" title="Projects">
+    <Section id="projects" title={t.projectsTitle}>
       <p className="font-mono text-xs text-cyan-400/60 -mt-2 mb-6 flex items-center gap-2">
         <span />
-        click any project to view details
+        {t.projectsHint}
       </p>
 
       <div className="space-y-4">
-        {PROJECTS.map((proj) => (
+        {content.projects.map((proj) => (
           <div
             key={proj.role}
             onClick={() => onSelect(proj)}
@@ -19,7 +21,17 @@ export default function Projects({ onSelect }) {
           >
             <div className="flex items-start justify-between gap-4">
               <div>
-                <p className="font-display font-semibold text-base text-white  transition-colors">{proj.role}</p>
+                {proj.org && (
+                  <p className="text-cyan-400/70 text-xs font-mono mb-1">{proj.org}</p>
+                )}
+                <p className="font-display font-semibold text-base text-white group-hover:text-cyan-400 transition-colors">
+                  {proj.role}
+                </p>
+                {proj.description && (
+                  <p className="text-xs text-slate-300/80 mt-2 leading-relaxed">
+                    {proj.description}
+                  </p>
+                )}
               </div>
             </div>
           </div>

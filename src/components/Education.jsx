@@ -1,13 +1,15 @@
 import React from "react";
 import { GraduationCap, MapPin } from "lucide-react";
 import Section from "./Section";
-import { EDUCATION } from "../constants";
+import { useLocale } from "../locale-context";
 
 export default function Education() {
+  const { t, content } = useLocale();
+
   return (
-    <Section id="education" title="Education">
+    <Section id="education" title={t.educationTitle}>
       <div className="space-y-4">
-        {EDUCATION.map((edu) => (
+        {content.education.map((edu) => (
           <div key={edu.name} className="edu-card p-6 flex gap-4">
             <div className="edu-ring w-12 h-12 rounded-lg flex items-center justify-center shrink-0">
               <GraduationCap size={22} />

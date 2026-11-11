@@ -1,12 +1,14 @@
 import React from "react";
 import Section from "./Section";
-import { LANGUAGES } from "../constants";
+import { useLocale } from "../locale-context";
 
 export default function Languages() {
+  const { t, content } = useLocale();
+
   return (
-    <Section id="languages" title="Languages">
+    <Section id="languages" title={t.languagesTitle}>
       <div className="edu-card p-8 md:p-10 max-w-xl space-y-8">
-        {LANGUAGES.map((l) => (
+        {content.languages.map((l) => (
           <div key={l.name}>
             <div className="flex justify-between items-baseline mb-2 text-xs">
               <span className="font-display text-white tracking-wider">{l.name}</span>

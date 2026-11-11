@@ -1,12 +1,14 @@
 import React from "react";
 import Section from "./Section";
-import { EXPERIENCE } from "../constants";
+import { useLocale } from "../locale-context";
 
 export default function Experience() {
+  const { t, content } = useLocale();
+
   return (
-    <Section id="experience" title="Experience">
+    <Section id="experience" title={t.experienceTitle}>
       <div className="space-y-6">
-        {EXPERIENCE.map((job) => (
+        {content.experience.map((job) => (
           <div key={job.role} className="edu-card p-6">
             <p className="text-cyan-400/70 text-xs font-mono">{job.when}</p>
             <p className="font-display font-semibold text-base text-white mt-1">

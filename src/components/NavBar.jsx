@@ -1,22 +1,40 @@
 import React from "react";
+import { useLocale } from "../locale-context";
 
 export default function Header() {
+  const { language, setLanguage, t } = useLocale();
+
   return (
-    <header className="sticky top-0 bg-[#030712]/90 backdrop-blur-md border-b border-cyan-900/40 z-10">
-      <div className="max-w-3xl mx-auto px-6 h-14 flex items-center justify-between text-sm">
-        <span className="font-display font-bold text-white flex items-center gap-2">
-          <span className="w-2.5 h-2.5 bg-cyan-400 rounded-sm shadow-[0_0_8px_#00e5ff]" />
+    <header className="site-nav sticky top-3 z-20 mx-auto w-[calc(100%-2rem)] max-w-6xl rounded-2xl">
+      <div className="flex min-h-16 items-center justify-between gap-6 px-5 py-3 sm:px-7">
+        <a href="#top" className="font-display flex shrink-0 items-center font-bold text-white">
           Sara Ribeiro
-        </span>
-        <nav className="hidden sm:flex gap-5 text-xs font-mono font-semibold uppercase tracking-widest text-slate-400">
-          <a href="#build" className="hover:text-cyan-400 transition-colors">Build</a>
-          <a href="#education" className="hover:text-cyan-400 transition-colors">Education</a>
-          <a href="#projects" className="hover:text-cyan-400 transition-colors">Projects</a>
-          <a href="#experience" className="hover:text-cyan-400 transition-colors">Experience</a>
-          <a href="#activities" className="hover:text-cyan-400 transition-colors">Activities</a>
-          <a href="#skills" className="hover:text-cyan-400 transition-colors">Skills</a>
-          <a href="#contact" className="border border-cyan-400/60 px-2.5 py-1 rounded text-cyan-400 hover:bg-cyan-400/10 transition-all">Contact</a>
-        </nav>
+        </a>
+        <div className="flex items-center gap-5">
+          <nav aria-label={t.navLabel} className="hidden flex-wrap items-center justify-end gap-x-5 gap-y-2 text-xs font-mono font-semibold uppercase tracking-widest text-slate-300 sm:flex">
+            <a href="#build" className="nav-link">{t.build}</a>
+            <a href="#education" className="nav-link">{t.education}</a>
+            <a href="#projects" className="nav-link">{t.projects}</a>
+            <a href="#experience" className="nav-link">{t.experience}</a>
+            <a href="#activities" className="nav-link">{t.activities}</a>
+            <a href="#skills" className="nav-link">{t.skills}</a>
+            <a href="#contact" className="nav-contact">{t.contact}</a>
+          </nav>
+          <div className="language-switch" role="group" aria-label={t.languageLabel}>
+            {["en", "pt"].map((option) => (
+              <button
+                key={option}
+                type="button"
+                lang={option}
+                aria-pressed={language === option}
+                onClick={() => setLanguage(option)}
+                className={`language-option ${language === option ? "is-active" : ""}`}
+              >
+                {option.toUpperCase()}
+              </button>
+            ))}
+          </div>
+        </div>
       </div>
     </header>
   );
