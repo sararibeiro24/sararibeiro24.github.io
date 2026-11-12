@@ -235,20 +235,6 @@ body::after {
   box-shadow: 0 0 12px var(--cyan);
 }
 
-.social-link {
-  border: 1px solid rgba(0, 229, 255, 0.4);
-  background: rgba(0, 229, 255, 0.06);
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  color: var(--cyan);
-  transition: all 0.2s ease;
-}
-
-.social-link:hover {
-  color: #ffffff;
-  border-color: var(--cyan);
-  box-shadow: 0 0 12px rgba(0, 229, 255, 0.4);
-}
 
 @media (prefers-reduced-motion: reduce) {
   *,

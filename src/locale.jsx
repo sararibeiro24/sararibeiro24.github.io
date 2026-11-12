@@ -55,7 +55,7 @@ const translations = {
     skills: "Competências",
     contact: "Contacto",
     heroLocation: "Porto, Portugal - estudante de mestrado",
-    heroIntro: "Mestranda em Engenharia Informática e Computação, a criar software com propósito e a explorar sistemas.",
+    heroIntro: "Estudante de Mestrado em Engenharia Informática e Computação, a criar software com propósito e a explorar sistemas.",
     buildTitle: "Sobre mim",
     buildDescription: "Atualmente a frequentar o mestrado em Engenharia Informática e Computação na FEUP, Universidade do Porto. Tenho especial interesse em redes de computadores, programação de baixo nível e sistemas, e muita vontade de aprender, desenvolver competências e abraçar novos desafios.",
     educationTitle: "Educação",
@@ -91,7 +91,7 @@ const portugueseContent = {
       ],
     },
     {
-      role: "Estagiária de investigação",
+      role: "Bolseira de investigação",
       org: "INEGI",
       when: "out. 2025 — jun. 2026",
       points: [
@@ -135,7 +135,7 @@ const portugueseContent = {
   projects: [
     {
       role: "Protocolo de Ligação de Dados Série",
-      org: "Redes de Computadores • C",
+      org: "C",
       description: "Protocolo fiável de camada de ligação implementado em C sobre interface série (RS-232), com sincronização de tramas, byte stuffing e controlo de erros Stop-and-Wait ARQ.",
       points: [
         "Conceção e implementação de um protocolo fiável de camada de ligação de dados sobre RS-232 em C para transmissão entre dois sistemas.",
@@ -147,7 +147,7 @@ const portugueseContent = {
     },
     {
       role: "Aplicação de Chat Distribuída",
-      org: "Computação Paralela e Distribuída • Java",
+      org: "Java",
       description: "Sistema de chat distribuído e multithread em Java com sockets, com suporte a múltiplas salas simultâneas, mensagens em tempo real e sincronização tolerante a falhas.",
       points: [
         "Desenvolvimento de um sistema de chat distribuído e tolerante a falhas em Java através de programação com sockets TCP/UDP.",
@@ -159,7 +159,7 @@ const portugueseContent = {
     },
     {
       role: "Compilador Java",
-      org: "Compiladores • Java e Bytecode JVM",
+      org: "Java e Bytecode JVM",
       description: "Compilador completo para a linguagem Java-- desenvolvido com JavaCC, com construção de AST, análise semântica e geração de bytecode Jasmin otimizado para a JVM.",
       points: [
         "Construção de um compilador de raiz para a linguagem Java-- com geração de bytecode JVM através do Jasmin e análise léxica/sintática com JavaCC.",
@@ -171,7 +171,7 @@ const portugueseContent = {
     },
     {
       role: "GameVerse",
-      org: "Aplicações Web e Bases de Dados • Full-Stack",
+      org: "Full-Stack",
       description: "Aplicação web full-stack orientada a dados para catálogo e comunidade de videojogos, concebida com PostgreSQL, APIs backend e interface responsiva.",
       points: [
         "Modelação e arquitetura de base de dados relacional em PostgreSQL normalizada a 3NF, com índices, transações, triggers e integridade de dados.",
@@ -185,12 +185,15 @@ const portugueseContent = {
   activities: [
     {
       org: "BEST Porto",
-      role: "Responsável de IT - Scitech 26",
+      role: "Responsável de IT - SciTeCh 26",
+      description: "Responsável pelo desenvolvimento e manutenção tecnológica da SciTeCh.",
+      info: "https://scitech.bestporto.org/",
+      linkLabel: "Ver website",
       points: [
-        "Manter o site SciTeCh",
-        "Adicionar novas funcionalidades à Store App",
-        "Apoiar a preparação de sessões de formação em IT",
-        "Apoiar as Topics durante o Hackathon",
+        "Manutenção e atualização do website da SciTeCh.",
+        "Desenvolvimento de novas funcionalidades para a Store App.",
+        "Apoio na preparação de sessões de formação em IT.",
+        "Apoio às Topics durante o Hackathon.",
       ],
     },
   ],
@@ -211,6 +214,7 @@ const portugueseContent = {
 };
 
 export function LocaleProvider({ children }) {
+
   const [language, setLanguage] = useState(() => {
     try {
       return window.localStorage.getItem("portfolio-language") === "pt" ? "pt" : "en";
@@ -236,14 +240,14 @@ export function LocaleProvider({ children }) {
     content: language === "pt"
       ? portugueseContent
       : {
-          experience: EXPERIENCE,
-          education: EDUCATION,
-          projects: PROJECTS,
-          activities: ACTIVITIES,
-          skills: SKILLS,
-          languages: LANGUAGES,
-          volunteering: VOLUNTEER,
-        },
+        experience: EXPERIENCE,
+        education: EDUCATION,
+        projects: PROJECTS,
+        activities: ACTIVITIES,
+        skills: SKILLS,
+        languages: LANGUAGES,
+        volunteering: VOLUNTEER,
+      },
   }), [language]);
 
   return <LocaleContext.Provider value={value}>{children}</LocaleContext.Provider>;

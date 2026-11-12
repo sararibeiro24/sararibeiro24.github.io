@@ -1,3 +1,6 @@
+import github from "./images/github.png";
+import linkedin from "./images/linkedin.png";
+import email from "./images/email.png";
 export const EXPERIENCE = [
   {
     role: "TA Teaching Assistant",
@@ -56,9 +59,9 @@ export const VOLUNTEER = [
 export const GITHUB_USERNAME = "sararibeiro24";
 
 export const SOCIALS = [
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/sara-ribeiro-8357023b6/" },
-  { name: "GitHub", href: `https://github.com/${GITHUB_USERNAME}` },
-  { name: "Email", href: "mailto:saramribeiro24@gmail.com" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/sara-ribeiro-8357023b6/", image: linkedin },
+  { name: "GitHub", href: `https://github.com/${GITHUB_USERNAME}`, image: github },
+  { name: "Email", href: "mailto:saramribeiro24@gmail.com", image: email },  
 ];
 
 export const EDUCATION = [
@@ -79,7 +82,7 @@ export const EDUCATION = [
 
 export const PROJECTS = [
   {
-    role: "Serial Link Layer Protocol",
+    role: "Serial Link Layer Protocol ",
     org: "C",
     description: "Reliable data link layer protocol implemented in C over a serial interface (RS-232), supporting frame framing, byte stuffing, and Stop-and-Wait ARQ error control for file transfers.",
     points: [
@@ -91,7 +94,7 @@ export const PROJECTS = [
     info: "https://github.com/sararibeiro24/Y3S1-COMPUTER_NETWORKS",
   },
   {
-    role: "Distributed Chat Application",
+    role: "Distributed Chat Application ",
     org: "Java",
     description: "Scalable, multithreaded distributed chatroom built in Java using socket programming, supporting concurrent rooms, user presence, and synchronized messaging.",
     points: [
@@ -103,7 +106,7 @@ export const PROJECTS = [
     info: "https://github.com/sararibeiro24/Y3S2-PARALLEL_DISTRIBUTED_COMPUTING/tree/main/assign2",
   },
   {
-    role: "Compilers",
+    role: "Compilers ",
     org: "Java & JVM Bytecode",
     description: "Full compiler for the Java-- language written with JavaCC, featuring AST construction, semantic type checking, and optimized JVM bytecode generation via Jasmin.",
     points: [
@@ -115,7 +118,7 @@ export const PROJECTS = [
     info: "https://github.com/sararibeiro24/Y3S2-COMPILERS",
   },
   {
-    role: "GameVerse",
+    role: "GameVerse ",
     org: "Full-Stack",
     description: "Full-stack, database-driven web platform for video game exploration and community discussions, built with PostgreSQL, backend APIs, and responsive design.",
     points: [
@@ -131,12 +134,15 @@ export const PROJECTS = [
 export const ACTIVITIES = [
   {
     org: "BEST Porto",
-    role: "IT Responsible - Scitech 26",
+    role: "IT Responsible - SciTeCh 26 ",
+    description: "Responsible for IT development and maintenance of SciTeCh.",
+    info: "https://scitech.bestporto.org/",
+    linkLabel: "View Website",
     points: [
-      "Maintain the SciTeCh website",
-      "Add new features to the Store App",
-      "Assist in preparing IT training sessions",
-      "Assist the Topics during the Hackathon",
+      "Maintain and update the SciTeCh website.",
+      "Develop new features for the Store App.",
+      "Assist in preparing IT training sessions.",
+      "Support the technical topics during the Hackathon.",
     ],
-  }
+  },
 ];

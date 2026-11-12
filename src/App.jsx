@@ -16,20 +16,26 @@ import { LocaleProvider } from "./locale";
 
 export default function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedActivity, setSelectedActivity] = useState(null);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") setSelectedProject(null);
+      if (e.key === "Escape") {
+        setSelectedProject(null);
+        setSelectedActivity(null);
+      }
     };
-    if (selectedProject) {
+
+    if (selectedProject || selectedActivity) {
       window.addEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "hidden";
     }
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "auto";
     };
-  }, [selectedProject]);
+  }, [selectedProject, selectedActivity]);
 
   return (
     <LocaleProvider>
@@ -39,9 +45,9 @@ export default function App() {
         <Build />
         <Education />
         <Projects onSelect={setSelectedProject} />
-        <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+        <ProjectModal project={selectedProject || selectedActivity} onClose={() => { setSelectedProject(null); setSelectedActivity(null); }} />
         <Experience />
-        <Activities />
+        <Activities onSelect={setSelectedActivity} />
         <Skills />
         <Languages />
         <Volunteering />
