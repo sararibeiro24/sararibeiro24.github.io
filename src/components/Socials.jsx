@@ -2,7 +2,14 @@ import React from "react";
 import Section from "./Section";
 import { SOCIALS } from "../constants";
 import { useLocale } from "../locale-context";
-
+import github from "../images/github.png";
+import linkedin from "../images/linkedin.png";
+import email from "../images/email.png";
+const SOCIAL_IMAGES = {
+  github,
+  linkedin,
+  email,
+};
 export default function Socials() {
   const { t } = useLocale();
 
@@ -22,8 +29,8 @@ export default function Socials() {
             className="social-link w-12 h-12 flex items-center justify-center rounded-full"
           >
             <img
-              src={s.image}
-              alt=""
+              src={SOCIAL_IMAGES[s.image]}
+              alt={s.name}
               className="w-5 h-5 object-contain"
             />
           </a>

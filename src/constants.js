@@ -1,6 +1,4 @@
-import github from "./images/github.png";
-import linkedin from "./images/linkedin.png";
-import email from "./images/email.png";
+
 export const EXPERIENCE = [
   {
     role: "TA Teaching Assistant",
@@ -59,9 +57,9 @@ export const VOLUNTEER = [
 export const GITHUB_USERNAME = "sararibeiro24";
 
 export const SOCIALS = [
-  { name: "LinkedIn", href: "https://www.linkedin.com/in/sara-ribeiro-8357023b6/", image: linkedin },
-  { name: "GitHub", href: `https://github.com/${GITHUB_USERNAME}`, image: github },
-  { name: "Email", href: "mailto:saramribeiro24@gmail.com", image: email },  
+  { name: "LinkedIn", href: "https://www.linkedin.com/in/sara-ribeiro-8357023b6/", image: "linkedin" },
+  { name: "GitHub", href: `https://github.com/${GITHUB_USERNAME}`, image: "github" },
+  { name: "Email", href: "mailto:saramribeiro24@gmail.com", image: "email" },  
 ];
 
 export const EDUCATION = [
