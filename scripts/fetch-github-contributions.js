@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { GITHUB_USERNAME } from "../src/constants.js";
+import "dotenv/config";
 
 const token = process.env.GH_CONTRIBUTIONS_TOKEN;
 if (!token) {
