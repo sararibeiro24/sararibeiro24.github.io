@@ -14,11 +14,14 @@ export const Robot = () => {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, width / height, 0.1, 50);
-    // Tighter zoom, low 3/4 isometric perspective
     camera.position.set(3.8, 2.6, 4.4);
     camera.lookAt(0, 0.1, 0);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      powerPreference: "high-performance",
+    });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -55,7 +58,12 @@ export const Robot = () => {
     car.add(chassis);
 
     const postGeo = new THREE.CylinderGeometry(0.025, 0.025, 0.35, 6);
-    const brassMat = new THREE.MeshStandardMaterial({ color: 0xeab308, metalness: 0.9, roughness: 0.2 });
+    const brassMat = new THREE.MeshStandardMaterial({
+      color: 0xeab308,
+      metalness: 0.9,
+      roughness: 0.2,
+    });
+
     [
       [0.9, 0.18, 0.55],
       [0.9, 0.18, -0.55],
@@ -80,17 +88,24 @@ export const Robot = () => {
     const leadMatR = new THREE.MeshBasicMaterial({ color: 0xef4444 });
     const leadMatB = new THREE.MeshBasicMaterial({ color: 0x09090b });
     const leadGeo = new THREE.CylinderGeometry(0.015, 0.015, 0.3, 6);
+
     const leadR = new THREE.Mesh(leadGeo, leadMatR);
     leadR.position.set(-0.02, 0.25, 0.12);
     leadR.rotation.z = Math.PI / 3;
+
     const leadB = new THREE.Mesh(leadGeo, leadMatB);
     leadB.position.set(-0.02, 0.25, 0.16);
     leadB.rotation.z = Math.PI / 3;
+
     car.add(leadR);
     car.add(leadB);
 
     const heatsinkGeo = new THREE.BoxGeometry(0.3, 0.32, 0.3);
-    const heatsinkMat = new THREE.MeshStandardMaterial({ color: 0x111827, metalness: 0.85, roughness: 0.25 });
+    const heatsinkMat = new THREE.MeshStandardMaterial({
+      color: 0x111827,
+      metalness: 0.85,
+      roughness: 0.25,
+    });
     const heatsink = new THREE.Mesh(heatsinkGeo, heatsinkMat);
     heatsink.position.set(-0.1, 0.2, -0.38);
     car.add(heatsink);
@@ -106,7 +121,10 @@ export const Robot = () => {
     car.add(pcb);
 
     const icGeo = new THREE.BoxGeometry(0.4, 0.04, 0.14);
-    const icMat = new THREE.MeshStandardMaterial({ color: 0x09090b, roughness: 0.4 });
+    const icMat = new THREE.MeshStandardMaterial({
+      color: 0x09090b,
+      roughness: 0.4,
+    });
     const ic = new THREE.Mesh(icGeo, icMat);
     ic.position.set(0.18, 0.11, 0.1);
     car.add(ic);
@@ -125,7 +143,9 @@ export const Robot = () => {
     sensorGroup.position.set(0.82, 0.42, 0);
 
     const sensorBackingGeo = new THREE.BoxGeometry(0.06, 0.28, 0.68);
-    const sensorBackingMat = new THREE.MeshStandardMaterial({ color: 0x0284c7 });
+    const sensorBackingMat = new THREE.MeshStandardMaterial({
+      color: 0x0284c7,
+    });
     const sensorBacking = new THREE.Mesh(sensorBackingGeo, sensorBackingMat);
     sensorGroup.add(sensorBacking);
 
@@ -181,11 +201,14 @@ export const Robot = () => {
       roughness: 0.85,
     });
     const rimMat = new THREE.MeshStandardMaterial({
-      color: 0xfacc15, 
+      color: 0xfacc15,
       roughness: 0.35,
       metalness: 0.1,
     });
-    const hubNutMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.9 });
+    const hubNutMat = new THREE.MeshStandardMaterial({
+      color: 0x0f172a,
+      metalness: 0.9,
+    });
 
     const wheelPositions = [
       [0.65, -0.02, 0.78],
@@ -198,21 +221,33 @@ export const Robot = () => {
       const wheelGroup = new THREE.Group();
       wheelGroup.position.set(x, y, z);
 
-      const tire = new THREE.Mesh(new THREE.CylinderGeometry(0.38, 0.38, 0.22, 14), tireMat);
+      const tire = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.38, 0.38, 0.22, 14),
+        tireMat
+      );
       tire.rotation.x = Math.PI / 2;
       wheelGroup.add(tire);
 
-      const rim = new THREE.Mesh(new THREE.CylinderGeometry(0.29, 0.29, 0.23, 10), rimMat);
+      const rim = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.29, 0.29, 0.23, 10),
+        rimMat
+      );
       rim.rotation.x = Math.PI / 2;
       wheelGroup.add(rim);
 
       for (let s = 0; s < 5; s++) {
-        const spoke = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.26, 0.24), rimMat);
+        const spoke = new THREE.Mesh(
+          new THREE.BoxGeometry(0.04, 0.26, 0.24),
+          rimMat
+        );
         spoke.rotation.z = (s * Math.PI * 2) / 5;
         wheelGroup.add(spoke);
       }
 
-      const nut = new THREE.Mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.25, 6), hubNutMat);
+      const nut = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.06, 0.06, 0.25, 6),
+        hubNutMat
+      );
       nut.rotation.x = Math.PI / 2;
       wheelGroup.add(nut);
 
@@ -227,7 +262,14 @@ export const Robot = () => {
     mainGroup.add(car);
 
     const createGlowingOrbit = (radius, tiltX, tiltZ, colorHex) => {
-      const curve = new THREE.EllipseCurve(0, 0, radius, radius * 0.95, 0, Math.PI * 2);
+      const curve = new THREE.EllipseCurve(
+        0,
+        0,
+        radius,
+        radius * 0.95,
+        0,
+        Math.PI * 2
+      );
       const points = curve.getPoints(48);
       const geo = new THREE.BufferGeometry().setFromPoints(
         points.map((p) => new THREE.Vector3(p.x, 0, p.y))
@@ -259,10 +301,16 @@ export const Robot = () => {
     const particleGeo = new THREE.BufferGeometry();
     const count = 35;
     const positions = new Float32Array(count * 3);
+
     for (let i = 0; i < count * 3; i++) {
       positions[i] = (Math.random() - 0.5) * 7;
     }
-    particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+    particleGeo.setAttribute(
+      "position",
+      new THREE.BufferAttribute(positions, 3)
+    );
+
     const particleMat = new THREE.PointsMaterial({
       size: 0.04,
       color: 0x38bdf8,
@@ -275,9 +323,11 @@ export const Robot = () => {
     let mouseX = 0;
     let mouseY = 0;
     let mouseTicking = false;
+
     const onMouseMove = (e) => {
       if (mouseTicking) return;
       mouseTicking = true;
+
       requestAnimationFrame(() => {
         const rect = container.getBoundingClientRect();
         mouseX = ((e.clientX - rect.left) / width) * 2 - 1;
@@ -285,32 +335,36 @@ export const Robot = () => {
         mouseTicking = false;
       });
     };
+
     window.addEventListener("mousemove", onMouseMove, { passive: true });
 
-    // Pause the render loop when the component is off-screen
     let isVisible = true;
     const observer = new IntersectionObserver(
-      ([entry]) => { isVisible = entry.isIntersecting; },
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
       { threshold: 0 }
     );
     observer.observe(container);
 
-    const clock = new THREE.Clock();
+    const startTime = performance.now();
 
-    // Pre-allocate reusable vectors to avoid GC pressure every frame
     const satPos = new THREE.Vector3();
     const axisX = new THREE.Vector3(1, 0, 0);
     const axisZ = new THREE.Vector3(0, 0, 1);
 
     let animId;
+
     const animate = () => {
       animId = requestAnimationFrame(animate);
-      if (!isVisible) return;           // skip all work when off-screen
 
-      const t = clock.getElapsedTime();
+
+      if (!isVisible) return;
+
+      const t = (performance.now() - startTime) / 1000;
 
       car.position.y = Math.sin(t * 1.6) * 0.07;
-      car.rotation.y = Math.sin(t * 0.7) * 0.18 - 0.35; 
+      car.rotation.y = Math.sin(t * 0.7) * 0.18 - 0.35;
       car.rotation.z = Math.sin(t * 1.2) * 0.03;
 
       sensorGroup.rotation.y = Math.sin(t * 2.8) * 0.45;
@@ -321,7 +375,12 @@ export const Robot = () => {
       const satAngle = t * 1.1;
       const rx = 2.5;
       const rz = 2.5 * 0.95;
-      satPos.set(Math.cos(satAngle) * rx, 0, Math.sin(satAngle) * rz);
+
+      satPos.set(
+        Math.cos(satAngle) * rx,
+        0,
+        Math.sin(satAngle) * rz
+      );
       satPos.applyAxisAngle(axisX, Math.PI / 3.2);
       satPos.applyAxisAngle(axisZ, 0.25);
       satellite.position.copy(satPos);
@@ -339,6 +398,7 @@ export const Robot = () => {
       observer.disconnect();
       window.removeEventListener("mousemove", onMouseMove);
       renderer.dispose();
+
       if (container.contains(renderer.domElement)) {
         container.removeChild(renderer.domElement);
       }
