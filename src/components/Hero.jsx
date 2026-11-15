@@ -1,5 +1,6 @@
 import React from "react";
-import { Robot } from "../robot";
+import { FileDown } from "lucide-react";
+import { TypingScene } from "./TypingScene";
 import GithubCommitCount from "./GithubCommitCount";
 import { useLocale } from "../locale-context";
 
@@ -16,11 +17,21 @@ export default function Hero() {
         <p className="hero-intro mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg">
           {t.heroIntro}
         </p>
+        <div className="mt-6 flex justify-center sm:justify-start">
+          <a
+            href="/CV-SaraRibeiro.pdf"
+            download="CV-SaraRibeiro.pdf"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-slate-400 hover:text-cyan-300 transition-colors"
+          >
+            <FileDown size={14} />
+            <span>Download CV</span>
+          </a>
+        </div>
       </div>
 
-      <div className="hero-art flex w-full shrink-0 flex-col items-center gap-3 sm:w-80">
-        <div className="hero-orbit">
-          <Robot />
+      <div className="hero-art flex w-full shrink-0 flex-col items-center gap-3 sm:w-88 md:w-96">
+        <div className="w-full">
+          <TypingScene />
         </div>
         <GithubCommitCount />
       </div>

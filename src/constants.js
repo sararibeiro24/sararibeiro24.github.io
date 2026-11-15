@@ -13,8 +13,7 @@ export const EXPERIENCE = [
     org: "INEGI",
     when: "Oct 2025 — Jun 2026",
     points: [
-      "Data analysis and visualization with Power BI.",
-      "Organizing datasets across Excel and SQL queries.",
+       "Developed Power BI reports, with a finance report as the main project: data preparation and understanding of Excel data stored in a database, and row-level security (RLS)."
     ],
   },
   {
@@ -22,8 +21,7 @@ export const EXPERIENCE = [
     org: "INESC TEC",
     when: "Summer 2025",
     points: [
-      "Designed and built an XR training platform in Unity.",
-      "Applied real software-engineering practices to a research prototype.",
+      "Extended an industrial XR training platform using Unity (C#), implementing CAD model import and conversion through Python scripts, integrated PDF document reading and interface enhancements. Independently planned, implemented and tested assigned features."
     ],
   },
   {
@@ -31,8 +29,7 @@ export const EXPERIENCE = [
     org: "Pans & Company",
     when: "Jun 2024 — Jul 2025",
     points: [
-      "Customer service and food prep under quality and safety standards.",
-      "Built multitasking and prioritization habits during busy shifts.",
+      "Customer service and food preparation under quality and safety standards, alongside full-time studies."
     ],
   }
 ];
@@ -50,7 +47,7 @@ export const LANGUAGES = [
 ];
 
 export const VOLUNTEER = [
-  { org: "FEUP Buddies", role: "Academic Mentor", text: "Guiding incoming Erasmus students at FEUP." },
+  { org: "FEUP Buddies", role: "Academic Mentor", text: "helping incoming Erasmus students adapt to university life and integrate into the FEUP community." },
   { org: "Community Outreach", role: "Volunteer", text: "\"Banco Alimentar\", beach cleanups, homeless support." },
 ];
 
@@ -138,7 +135,7 @@ export const ACTIVITIES = [
     linkLabel: "View Website",
     points: [
       "Maintain and update the SciTeCh website.",
-      "Develop new features for the Store App.",
+      "Develop new features for the Competition App.",
       "Assist in preparing IT training sessions.",
       "Support the technical topics during the Hackathon.",
     ],
