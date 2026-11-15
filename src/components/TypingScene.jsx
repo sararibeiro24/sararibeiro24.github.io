@@ -8,7 +8,7 @@ export const TypingScene = () => {
   const { t } = useLocale();
   const [loadProgress, setLoadProgress] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
-
+  
   useEffect(() => {
     const container = mountRef.current;
     if (!container) return;

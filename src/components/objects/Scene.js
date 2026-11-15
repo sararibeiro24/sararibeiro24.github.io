@@ -17,10 +17,10 @@ export const SCENE_CONFIG = {
     DESK_DEPTH: 0.6,
     DESK_CENTER_Z: 0.45 + 0.6 / 2,
     LAPTOP_POS: new THREE.Vector3(0.06, 0.635 + 0.003, 0.6),
-    MOUSE_HOME: { x: -0.25, z: 0.58 },
+    MOUSE_HOME: { x: -0.25, y: 0.68, z: 0.61 },
     MOUSE_LIFT: 0.008,
-    MOUSE_Z_OFFSET: -0.02,
-    MOUSE_ZONE_X: -0.14,
+    MOUSE_FOLLOW_NEAR: 0.08,
+    MOUSE_FOLLOW_FAR: 0.25,
 };
 
 export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
@@ -30,13 +30,13 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
     const width = container.clientWidth || 320;
     const height = container.clientHeight || 340;
 
-    // 1. Scene & Camera
+    // Scene & Camera
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(36, width / height, 0.1, 40);
     camera.position.set(2.2, 1.5, 1.35);
     camera.lookAt(0, 0.68, 0.45);
 
-    // 2. Renderer
+    // Renderer
     const renderer = new THREE.WebGLRenderer({
         antialias: true,
         alpha: true,
@@ -48,7 +48,7 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
     renderer.toneMappingExposure = 1.15;
     container.appendChild(renderer.domElement);
 
-    // 3. Lighting
+    // Lighting
     scene.add(new THREE.AmbientLight(0xffffff, 1.1));
 
     const keyLight = new THREE.DirectionalLight(0xf8fafc, 1.8);
@@ -63,7 +63,7 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
     blueFill.position.set(0, -1.5, 2.5);
     scene.add(blueFill);
 
-    // 4. Main diorama group
+    // Main diorama group
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
@@ -83,7 +83,7 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
     floorRing.position.set(0, 0.002, 0.4);
     mainGroup.add(floorRing);
 
-    // 5. Modular objects
+    // Modular objects
     const { group: deskGroup, legMaterial } = createDesk({
         DESK_Y: SCENE_CONFIG.DESK_Y,
         DESK_DEPTH: SCENE_CONFIG.DESK_DEPTH,
@@ -119,9 +119,9 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
 
     mainGroup.add(deskGroup);
 
-    // 6. Character model (typing.glb)
+    // Character model
     let mixer = null;
-    let rightHand = null;
+    let mouseAnchor = null;
 
     new GLTFLoader().load(
         '/models/typing.glb',
@@ -130,9 +130,6 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
             const model = gltf.scene;
 
             model.traverse((child) => {
-                if (child.isBone && /RightHandMiddle1$/.test(child.name)) {
-                    rightHand = child;
-                }
                 if (child.isMesh && child.material) {
                     child.castShadow = true;
                     child.receiveShadow = true;
@@ -141,6 +138,11 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
             });
 
             mainGroup.add(model);
+
+            mouseAnchor = model.getObjectByName('MouseAnchor');
+            if (!mouseAnchor) {
+                console.warn('MouseAnchor não encontrado');
+            }
 
             if (gltf.animations && gltf.animations.length > 0) {
                 mixer = new THREE.AnimationMixer(model);
@@ -166,7 +168,7 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
         }
     );
 
-    // 7. Interaction & Animation
+    // Interaction & Animation
     const { state: interactionState, cleanup: cleanupInteraction } = setupInteraction({
         domElement: renderer.domElement,
         container,
@@ -184,12 +186,12 @@ export const initScene = (container, { onProgress, onLoad, onError } = {}) => {
         deskGroup,
         mouseGroup,
         getMixer: () => mixer,
-        getRightHand: () => rightHand,
+        getMouseAnchor: () => mouseAnchor,
         interactionState,
         SCENE_CONFIG,
     });
 
-    // 8. Cleanup
+    // Cleanup
     const dispose = () => {
         disposed = true;
         stopAnimation();

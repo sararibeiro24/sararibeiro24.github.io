@@ -19,7 +19,7 @@ function createBottle({
 
     group.add(new THREE.Mesh(new THREE.LatheGeometry(profile, 24), bottleMat));
 
-    // Cap & Loop
+    // Cap
     const cap = new THREE.Mesh(new THREE.CylinderGeometry(0.019, 0.019, 0.035, 16), darkMat);
     cap.position.y = 0.2225;
     group.add(cap);
@@ -29,7 +29,7 @@ function createBottle({
     loop.rotation.y = Math.PI / 2;
     group.add(loop);
 
-    // Cyan Ring
+    // Ring
     const ring = new THREE.Mesh(new THREE.CylinderGeometry(0.0325, 0.0325, 0.006, 24), cyanMat);
     ring.position.y = 0.06;
     group.add(ring);

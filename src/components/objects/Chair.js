@@ -24,14 +24,14 @@ function createChair({
     back.rotation.x = -0.05;
     group.add(back);
 
-    // Bracket & Post
+    // Bracket & post
     group.add(createBox(0.04, 0.2, 0.03, legMaterial, 0, 0.48, -0.1));
 
     const post = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 0.32, 10), legMaterial);
     post.position.set(0, 0.2, CHAIR_Z);
     group.add(post);
 
-    // Base spoke arms & casters
+    // Base
     const spokeLen = 0.24;
     const spokeGeo = new THREE.CylinderGeometry(0.012, 0.012, spokeLen, 6);
     spokeGeo.rotateZ(Math.PI / 2);

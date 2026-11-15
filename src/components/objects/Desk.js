@@ -27,11 +27,11 @@ function createDesk({
     const cyanMat = new THREE.MeshBasicMaterial({ color: 0x00e5ff });
     const padMat = new THREE.MeshStandardMaterial({ color: 0x0b1120 });
 
-    // Tabletop & cyan front edge
+    // Tabletop
     group.add(createBox(1.15, DESK_THICK, DESK_DEPTH, deskMat, 0, DESK_Y - DESK_THICK / 2, DESK_CENTER_Z));
     group.add(createBox(1.152, 0.005, 0.006, cyanMat, 0, DESK_Y - 0.004, DESK_FRONT_Z + DESK_DEPTH + 0.002));
 
-    // Legs & feet
+    // Legs
     const legH = DESK_Y - DESK_THICK;
     [-0.53, 0.53].forEach((x) => {
         group.add(createCylinder(0.016, legH, legMaterial, x, legH / 2, DESK_FRONT_Z + 0.08));
@@ -39,7 +39,7 @@ function createDesk({
         group.add(createBox(0.035, 0.02, DESK_DEPTH - 0.1, legMaterial, x, 0.01, DESK_CENTER_Z));
     });
 
-    // Desk mat
+    // Mat
     group.add(createBox(0.68, 0.003, 0.32, padMat, -0.04, DESK_Y + 0.0015, 0.64));
 
     return { group, legMaterial };

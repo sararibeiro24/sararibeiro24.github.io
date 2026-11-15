@@ -9,7 +9,7 @@ function startAnimation({
     deskGroup,
     mouseGroup,
     getMixer,
-    getRightHand,
+    getMouseAnchor,
     interactionState,
     SCENE_CONFIG,
 }) {
@@ -20,7 +20,7 @@ function startAnimation({
     observer.observe(container);
 
     const clock = new THREE.Clock();
-    const handPos = new THREE.Vector3();
+    const anchorPos = new THREE.Vector3();
     let mouseTargetX = SCENE_CONFIG.MOUSE_HOME.x;
     let mouseTargetZ = SCENE_CONFIG.MOUSE_HOME.z;
     let animId;
@@ -36,21 +36,37 @@ function startAnimation({
         const mixer = getMixer();
         if (mixer) mixer.update(delta);
 
-        // Tilt from interaction
+        // Tilt
         mainGroup.rotation.y += (interactionState.targetRotY - mainGroup.rotation.y) * 0.05;
         mainGroup.rotation.x += (-interactionState.targetRotX - mainGroup.rotation.x) * 0.05;
 
-        // Hand-tracking mouse movement
-        const rightHand = getRightHand();
-        if (rightHand) {
+        // Anchor tracking
+        const mouseAnchor = getMouseAnchor?.();
+        if (mouseAnchor) {
             mainGroup.updateMatrixWorld(true);
-            rightHand.getWorldPosition(handPos);
-            deskGroup.worldToLocal(handPos);
-            if (handPos.x < SCENE_CONFIG.MOUSE_ZONE_X) {
-                mouseTargetX = Math.max(-0.34, Math.min(-0.14, handPos.x));
-                mouseTargetZ = Math.max(0.5, Math.min(0.7, handPos.z + SCENE_CONFIG.MOUSE_Z_OFFSET));
-            }
+            mouseAnchor.getWorldPosition(anchorPos);
+            deskGroup.worldToLocal(anchorPos);
+
+            const dx = anchorPos.x - SCENE_CONFIG.MOUSE_HOME.x;
+            const dz = anchorPos.z - SCENE_CONFIG.MOUSE_HOME.z;
+            const distance = Math.hypot(dx, dz);
+
+            const weight = 1 - THREE.MathUtils.smoothstep(
+                distance,
+                SCENE_CONFIG.MOUSE_FOLLOW_NEAR,
+                SCENE_CONFIG.MOUSE_FOLLOW_FAR
+            );
+
+            mouseTargetX = SCENE_CONFIG.MOUSE_HOME.x + dx * weight;
+            mouseTargetZ = SCENE_CONFIG.MOUSE_HOME.z + dz * weight;
+        } else {
+            mouseTargetX = SCENE_CONFIG.MOUSE_HOME.x;
+            mouseTargetZ = SCENE_CONFIG.MOUSE_HOME.z;
         }
+
+        // Clamp
+        mouseTargetX = Math.max(-0.34, Math.min(-0.14, mouseTargetX));
+        mouseTargetZ = Math.max(0.5, Math.min(0.7, mouseTargetZ));
 
         mouseGroup.position.x += (mouseTargetX - mouseGroup.position.x) * 0.14;
         mouseGroup.position.z += (mouseTargetZ - mouseGroup.position.z) * 0.14;
